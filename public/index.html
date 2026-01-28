@@ -88,6 +88,23 @@
             background: rgba(248, 246, 243, 0.95);
         }
 
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
         .contact-btn {
             background: var(--primary);
             color: white;
@@ -496,13 +513,59 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav {
+                padding: 1rem !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .logo img {
+                height: 36px !important;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
             }
 
             .stat-bar {
                 flex-direction: column;
                 gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
             }
 
             .expertise-grid {
@@ -520,10 +583,21 @@
 
             .cta-buttons {
                 flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
             }
 
             .services::before {
                 display: none;
+            }
+
+            .container {
+                padding: 0 1.5rem;
             }
         }
     </style>
@@ -532,11 +606,16 @@
 <body>
     <header>
         <nav>
-            <div class="logo">
+            <a href="/" class="logo">
                 <img src="3g-logo.png" alt="3G Consulting Logo">
                 <span>3G Consulting</span>
+            </a>
+            <div class="nav-links">
+                <a href="/services.html">Services</a>
+                <a href="/technical-audit.html">Technical Audit</a>
+                <a href="/client-results.html">Client Results</a>
+                <a href="#contact" class="contact-btn">Request Audit</a>
             </div>
-            <a href="#contact" class="contact-btn">Request Technical Audit</a>
         </nav>
     </header>
 

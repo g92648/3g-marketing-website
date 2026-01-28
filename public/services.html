@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - 3G Consulting</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4a574;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gray: #6b7280;
+            --border: #e5e3df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            background: rgba(248, 246, 243, 0.95);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3);
+        }
+
+        /* Content */
+        main {
+            margin-top: 120px;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--gray);
+            margin-bottom: 4rem;
+            line-height: 1.5;
+        }
+
+        .service-section {
+            margin-bottom: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .service-section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .logo img {
+                height: 36px !important;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="3g-logo.png" alt="3G Consulting">
+                <span>3G Consulting</span>
+            </a>
+            <div class="nav-links">
+                <a href="/services.html">Services</a>
+                <a href="/technical-audit.html">Technical Audit</a>
+                <a href="/client-results.html">Client Results</a>
+                <a href="/#contact" class="contact-btn">Request Audit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Services</h1>
+            <p class="subtitle">Specialized SAP Business One Phase-2 Support</p>
+            <p>We don't sell implementations. We fix live systems that aren't working, stabilize rushed go-lives, and
+                build the integrations and intelligence layers your business actually needs.</p>
+
+            <!-- Emergency Support -->
+            <div class="service-section">
+                <h2>Emergency Support</h2>
+                <p><strong>When you call:</strong> Production system failure, data corruption after a bad import,
+                    posting process breaking critical month-end close, or integration creating duplicate/incorrect
+                    transactions that are contaminating financials.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Immediate triage call to understand failure mode and business impact</li>
+                    <li>Remote diagnostic using SQL profiling, error logs, and data integrity checks</li>
+                    <li>Root cause identification—not just symptoms</li>
+                    <li>Surgical fix with testing protocol to prevent recurrence</li>
+                    <li>Documentation of what broke, why, and how to avoid it</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>24-48 hours for diagnosis and containment. Full resolution typically 3-7 days depending on
+                    complexity.</p>
+
+                <h3>Deliverables:</h3>
+                <p>Working system, corrected data, written incident report with root cause analysis, and preventive
+                    recommendations.</p>
+            </div>
+
+            <!-- Review & Redesign -->
+            <div class="service-section">
+                <h2>Review & Redesign</h2>
+                <p><strong>When you call:</strong> Your go-live was rushed, workflows don't match how your business
+                    actually operates, or you inherited a system configured by someone who didn't understand your
+                    industry. Users are working around the ERP instead of through it.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Process audit: interview stakeholders, map actual vs. configured workflows</li>
+                    <li>System config review: chart of accounts, approval hierarchies, allocation rules, UDF usage</li>
+                    <li>Data quality assessment: identify incomplete masters, inconsistent coding, reconciliation gaps
+                    </li>
+                    <li>Redesign roadmap: prioritized fixes from quick wins to structural changes</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>2-3 weeks for full assessment. Implementation of recommended changes phased over 4-12 weeks depending
+                    on scope.</p>
+
+                <h3>Deliverables:</h3>
+                <p>Written assessment, configuration change specifications, migration plan for data cleanup, training
+                    materials for revised workflows.</p>
+            </div>
+
+            <!-- AI & Automations -->
+            <div class="service-section">
+                <h2>AI & Automations</h2>
+                <p><strong>When you call:</strong> You're tired of manual report generation every month, your demand
+                    forecasting is spreadsheet-based guesswork, or you need intelligent exception monitoring that
+                    doesn't require a human checking 500 transactions daily.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Identify high-ROI automation candidates (reporting, alerts, forecasting, data validation)</li>
+                    <li>Build practical AI/ML models where pattern recognition adds value—no hype</li>
+                    <li>Develop custom SDK add-ons or Service Layer integrations for workflow automation</li>
+                    <li>Implement scheduled jobs with error handling and audit trails</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>2-4 weeks per automation initiative depending on complexity and data readiness.</p>
+
+                <h3>Deliverables:</h3>
+                <p>Production-grade automated processes, user documentation, handoff training for your team to
+                    maintain/extend.</p>
+            </div>
+
+            <!-- Complex Integrations -->
+            <div class="service-section">
+                <h2>Complex Integrations</h2>
+                <p><strong>When you call:</strong> External system (eCommerce, WMS, CRM, manufacturing execution) needs
+                    to stay in sync with SAP B1, existing integration is fragile or creating data errors, or you
+                    upgraded and the interface broke.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Architecture review: API capabilities, data volume, sync frequency, error handling requirements
+                    </li>
+                    <li>SDK or Service Layer integration development with proper transaction management</li>
+                    <li>Data validation and transformation logic to prevent garbage-in scenarios</li>
+                    <li>Monitoring and alerting for integration failures before they corrupt your books</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>3-6 weeks for typical middleware integration. Complex multi-system orchestration can extend to 8-12
+                    weeks.</p>
+
+                <h3>Deliverables:</h3>
+                <p>Hardened integration with comprehensive error handling, sync monitoring dashboard, technical
+                    documentation, admin training.</p>
+            </div>
+
+            <!-- Ad-Hoc Reporting -->
+            <div class="service-section">
+                <h2>Ad-Hoc Reporting</h2>
+                <p><strong>When you call:</strong> Crystal Reports is giving you data you don't trust, you need custom
+                    financial reconciliation queries, executives want operational dashboards that SAP B1 doesn't provide
+                    out-of-box, or you're exporting to Excel because the native reports don't cut it.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Requirements gathering: what decisions need this data, how often, what accuracy is required</li>
+                    <li>Custom SQL query development with optimization for large datasets</li>
+                    <li>Crystal Reports design or modification for formatted executive output</li>
+                    <li>Automated distribution via email/file drop if needed</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>1-2 weeks per reporting package (typically 3-5 related reports).</p>
+
+                <h3>Deliverables:</h3>
+                <p>Production reports with documentation, SQL source code, admin guide for modifications.</p>
+            </div>
+
+            <!-- Partner Delivery -->
+            <div class="service-section">
+                <h2>Partner Delivery</h2>
+                <p><strong>When you call:</strong> You're an SAP Business One partner with a high-stakes project
+                    (complex industry, demanding client, tight timeline) and need senior technical capacity you can rely
+                    on. Or you sold a custom integration and need someone who won't blow up the schedule.</p>
+
+                <h3>How we solve it:</h3>
+                <ul>
+                    <li>Embedded senior consultant role: architect, lead developer, or technical reviewer</li>
+                    <li>Handle the hard parts: SDK customizations, tricky integrations, performance issues, upgrade
+                        complications</li>
+                    <li>Weekly status reporting, transparent communication with your team and end client</li>
+                    <li>Knowledge transfer so your team can maintain what we build</li>
+                </ul>
+
+                <h3>Timeline:</h3>
+                <p>Flexible engagement from 4 weeks (focused technical spike) to 6+ months (full implementation delivery
+                    partner).</p>
+
+                <h3>Deliverables:</h3>
+                <p>Completed technical scope, code documentation, handoff sessions with your delivery team.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Schedule a Technical Audit</h2>
+            <p>Every situation is different. A 3-5 day diagnostic engagement identifies what's actually broken,
+                prioritizes fixes by business impact, and gives you a realistic roadmap.</p>
+            <div class="cta-buttons">
+                <a href="mailto:audit@3g-consulting.com" class="btn-primary">Request Technical Audit</a>
+                <a href="mailto:audit@3g-consulting.com" class="btn-secondary">Talk to Consultant</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 3G Consulting. Senior SAP Business One Phase-2 Specialists.
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Audit - 3G Consulting</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4a574;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gray: #6b7280;
+            --border: #e5e3df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            background: rgba(248, 246, 243, 0.95);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3);
+        }
+
+        /* Content */
+        main {
+            margin-top: 120px;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h4 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-box {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+
+        .pricing-box {
+            background: white;
+            border: 2px solid var(--border);
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .pricing-box h4 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        ol li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .logo img {
+                height: 36px !important;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .highlight-box,
+            .pricing-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="3g-logo.png" alt="3G Consulting">
+                <span>3G Consulting</span>
+            </a>
+            <div class="nav-links">
+                <a href="/services.html">Services</a>
+                <a href="/technical-audit.html">Technical Audit</a>
+                <a href="/client-results.html">Client Results</a>
+                <a href="/#contact" class="contact-btn">Request Audit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Technical Audit</h1>
+            <p class="subtitle">Paid Diagnostic Engagement for Live SAP B1 Systems</p>
+
+            <div class="highlight-box">
+                <p><strong>This is not a free consultation disguised as a sales pitch.</strong> It's a structured
+                    technical assessment that identifies what's broken, prioritizes fixes by business impact, and gives
+                    you a realistic roadmap with cost and timeline estimates for recommended work.</p>
+                <p style="margin-bottom: 0;">If your system is failing to deliver accurate financials, reliable
+                    workflows, or trustworthy reports, a diagnostic audit finds out why—before we talk about fixing
+                    anything.</p>
+            </div>
+
+            <h2>What We Evaluate</h2>
+
+            <h3>System Configuration</h3>
+            <ul>
+                <li>Chart of accounts structure and allocation rules</li>
+                <li>Approval workflows and authorization matrices</li>
+                <li>User-defined fields and custom forms</li>
+                <li>Posting logic and period-end close procedures</li>
+            </ul>
+
+            <h3>Data Integrity</h3>
+            <ul>
+                <li>Master data completeness and consistency (items, customers, vendors, BOM)</li>
+                <li>Transaction coding accuracy and missing references</li>
+                <li>Reconciliation between modules (AR/AP/GL, inventory/costing)</li>
+                <li>Historical data quality from migrations or imports</li>
+            </ul>
+
+            <h3>Integration Health</h3>
+            <ul>
+                <li>External system sync reliability (eCommerce, WMS, CRM, manufacturing)</li>
+                <li>API usage patterns and error handling</li>
+                <li>Data transformation logic and validation rules</li>
+                <li>Interface monitoring and alerting gaps</li>
+            </ul>
+
+            <h3>Reporting Accuracy</h3>
+            <ul>
+                <li>Financial statement reconciliation vs. operational reality</li>
+                <li>Crystal Reports logic review for critical executive reports</li>
+                <li>SQL query performance and data source integrity</li>
+                <li>Dashboard accuracy and timeliness</li>
+            </ul>
+
+            <h3>Workflow Efficiency</h3>
+            <ul>
+                <li>Process bottlenecks and manual workarounds</li>
+                <li>Automation opportunities (high-ROI candidates first)</li>
+                <li>Exception handling and escalation procedures</li>
+                <li>User adoption barriers and training gaps</li>
+            </ul>
+
+            <h3>Performance Bottlenecks</h3>
+            <ul>
+                <li>SQL Server indexing and query optimization</li>
+                <li>Large transaction processing (posting speed, month-end close duration)</li>
+                <li>Report generation time for executive dashboards</li>
+                <li>Database growth management and archiving strategy</li>
+            </ul>
+
+            <h2>Process: 3-5 Day Remote Assessment</h2>
+
+            <h4>Day 1-2: Discovery</h4>
+            <ul>
+                <li>Stakeholder interviews (finance, operations, IT) to understand presenting problems</li>
+                <li>System access and initial configuration review</li>
+                <li>Error log analysis and user pain point documentation</li>
+            </ul>
+
+            <h4>Day 3-4: Technical Analysis</h4>
+            <ul>
+                <li>SQL database profiling and data quality checks</li>
+                <li>Integration testing and sync validation</li>
+                <li>Crystal Reports and custom query review</li>
+                <li>Workflow mapping against business requirements</li>
+            </ul>
+
+            <h4>Day 5: Synthesis</h4>
+            <ul>
+                <li>Findings synthesis and prioritization</li>
+                <li>Cost/timeline estimation for recommended fixes</li>
+                <li>Delivery planning and risk assessment</li>
+            </ul>
+
+            <h2>Deliverables</h2>
+
+            <h3>Written Assessment Report:</h3>
+            <ul>
+                <li>Executive summary: top 3-5 issues ranked by business impact</li>
+                <li>Technical findings: root causes, not just symptoms</li>
+                <li>Immediate wins: quick fixes that deliver measurable value (1-2 weeks)</li>
+                <li>Long-term improvements: strategic changes for sustained reliability (2-6 months)</li>
+            </ul>
+
+            <h3>Prioritized Fix Roadmap:</h3>
+            <ul>
+                <li>Sequenced project list with dependencies</li>
+                <li>Cost estimates for each initiative</li>
+                <li>Timeline projections (realistic, not sales-optimistic)</li>
+                <li>Risk assessment for implementation</li>
+            </ul>
+
+            <h3>SQL Scripts & Documentation:</h3>
+            <ul>
+                <li>Data integrity queries you can run monthly</li>
+                <li>Reconciliation checks for ongoing monitoring</li>
+                <li>Performance diagnostic scripts</li>
+            </ul>
+
+            <h3>Follow-Up Session:</h3>
+            <ul>
+                <li>90-minute review call to walk through findings</li>
+                <li>Q&A on recommendations and implementation approach</li>
+                <li>Discussion of engagement options if you want us to execute fixes</li>
+            </ul>
+
+            <h2>Investment</h2>
+
+            <div class="pricing-box">
+                <h4>Standard Audit: $4,500 - $6,500</h4>
+                <ul>
+                    <li>3-5 day remote assessment</li>
+                    <li>Includes all deliverables listed above</li>
+                    <li>One follow-up review session</li>
+                </ul>
+            </div>
+
+            <div class="pricing-box">
+                <h4>Extended Audit (for complex environments): $8,000 - $12,000</h4>
+                <ul>
+                    <li>7-10 day assessment for multi-company, multi-currency, or heavily customized systems</li>
+                    <li>Deeper integration analysis</li>
+                    <li>Performance baseline testing under load</li>
+                    <li>Two follow-up sessions</li>
+                </ul>
+            </div>
+
+            <p>Pricing depends on system size, number of integrations, and scope of customizations. Quoted after initial
+                scoping call.</p>
+
+            <h2>What Happens Next</h2>
+
+            <ol>
+                <li><strong>Scoping Call (30 minutes):</strong> Understand your specific pain points and system
+                    complexity</li>
+                <li><strong>Audit Scheduling:</strong> Typically 1-2 weeks out for coordination with your team</li>
+                <li><strong>Assessment Execution:</strong> Remote access for 3-5 days, minimal disruption to operations
+                </li>
+                <li><strong>Report Delivery:</strong> Written findings within 5 business days of assessment completion
+                </li>
+                <li><strong>Review & Decision:</strong> Walk through recommendations, decide what to fix and when</li>
+            </ol>
+
+            <div class="highlight-box">
+                <p style="margin-bottom: 0;"><strong>This is diagnostic work.</strong> You're under no obligation to
+                    hire us for implementation. Some clients take our roadmap and execute internally. Others want us to
+                    handle the hard stuff. Both are fine.</p>
+            </div>
+        </div>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Schedule Your Audit</h2>
+            <div class="cta-buttons">
+                <a href="mailto:audit@3g-consulting.com" class="btn-primary">Request Assessment</a>
+                <a href="mailto:audit@3g-consulting.com" class="btn-secondary">Talk to Consultant</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 3G Consulting. Senior SAP Business One Phase-2 Specialists.
+    </footer>
+</body>
+
+</html>

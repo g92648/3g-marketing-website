@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Results - 3G Consulting</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4a574;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gray: #6b7280;
+            --border: #e5e3df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            background: rgba(248, 246, 243, 0.95);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3);
+        }
+
+        /* Content */
+        main {
+            margin-top: 120px;
+            padding: 4rem 0;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .subtitle {
+            font-size: 1.35rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            line-height: 1.5;
+        }
+
+        .case-study {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .case-study h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .case-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .case-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .case-meta-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .case-meta-value {
+            font-size: 1.05rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .outcome-highlight {
+            background: #f0f7f4;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .outcome-highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cta-section {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+
+            .logo img {
+                height: 36px !important;
+            }
+
+            .contact-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .case-study {
+                padding: 2rem 1.5rem;
+            }
+
+            .case-study h2 {
+                font-size: 1.6rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="/" class="logo">
+                <img src="3g-logo.png" alt="3G Consulting">
+                <span>3G Consulting</span>
+            </a>
+            <div class="nav-links">
+                <a href="/services.html">Services</a>
+                <a href="/technical-audit.html">Technical Audit</a>
+                <a href="/client-results.html">Client Results</a>
+                <a href="/#contact" class="contact-btn">Request Audit</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Client Results</h1>
+            <p class="subtitle">Anonymized Case Studies: Problem → Approach → Outcome</p>
+
+            <p>These are real scenarios where live SAP B1 systems were failing and needed technical intervention. Client
+                names withheld, but problems and results are accurate.</p>
+
+            <!-- Case Study 1: Manufacturing -->
+            <div class="case-study">
+                <h2>Manufacturing Company: Month-End Close Failures</h2>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Industry</span>
+                        <span class="case-meta-value">Mid-market discrete manufacturer</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Revenue</span>
+                        <span class="case-meta-value">~$85M</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">System</span>
+                        <span class="case-meta-value">SAP B1 9.3, SQL Server, 45 users</span>
+                    </div>
+                </div>
+
+                <h3>Presenting Problem</h3>
+                <p>Month-end close process taking 12-15 days with recurring reconciliation failures between inventory
+                    valuation and COGS. Finance team manually adjusting journal entries every month to force balance
+                    sheet accuracy. Auditors flagged control weaknesses. CFO couldn't trust reported gross margins.</p>
+
+                <h3>Technical Root Cause</h3>
+                <p>Rushed implementation left item master data incomplete (missing default warehouses, incorrect costing
+                    methods). Posting logic for production variances wasn't matching shop floor transaction timing.
+                    Integration from manufacturing execution system creating backdated inventory transactions that
+                    bypassed standard cost updates.</p>
+
+                <h3>Solution Approach</h3>
+                <ul>
+                    <li>Cleaned item masters and standardized costing methodology across 2,400 SKUs</li>
+                    <li>Rebuilt production variance posting logic with proper period-lock controls</li>
+                    <li>Fixed manufacturing integration to enforce transaction date validation</li>
+                    <li>Created automated reconciliation SQL queries for daily variance monitoring</li>
+                </ul>
+
+                <div class="outcome-highlight">
+                    <p><strong>Measurable Outcome:</strong></p>
+                    <p>Month-end close reduced to 4 days. Inventory-to-GL reconciliation automated with zero manual
+                        adjustments for 8 consecutive months. CFO regained confidence in reported margins. Audit
+                        findings cleared.</p>
+                </div>
+            </div>
+
+            <!-- Case Study 2: Distribution -->
+            <div class="case-study">
+                <h2>Distribution Company: Integration Breaking Post-Upgrade</h2>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Industry</span>
+                        <span class="case-meta-value">Wholesale distribution (industrial supplies)</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Revenue</span>
+                        <span class="case-meta-value">~$120M</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">System</span>
+                        <span class="case-meta-value">SAP B1 10.0 (upgraded from 9.3), Service Layer, 60 users</span>
+                    </div>
+                </div>
+
+                <h3>Presenting Problem</h3>
+                <p>After SAP B1 upgrade, eCommerce integration stopped syncing orders reliably. Sales orders created
+                    with wrong pricing, inventory availability checks failing, shipment confirmations not updating web
+                    storefront. Customers calling to complain about order status discrepancies. Operations manually
+                    re-keying 30-40 orders daily.</p>
+
+                <h3>Technical Root Cause</h3>
+                <p>Upgrade changed Service Layer API authentication and deprecated several endpoints. Third-party
+                    middleware wasn't updated for new API version. Error handling was non-existent—failed transactions
+                    disappeared without logging.</p>
+
+                <h3>Solution Approach</h3>
+                <ul>
+                    <li>Rebuilt integration using current Service Layer best practices with OAuth authentication</li>
+                    <li>Implemented comprehensive error logging and retry logic for transient failures</li>
+                    <li>Added data validation layer to prevent bad pricing/inventory data from reaching SAP B1</li>
+                    <li>Created monitoring dashboard for real-time sync status</li>
+                </ul>
+
+                <div class="outcome-highlight">
+                    <p><strong>Measurable Outcome:</strong></p>
+                    <p>Integration restored to 99.8% sync reliability. Manual order re-keying eliminated. Customer
+                        complaints about order status dropped 95%. Operations team recovered 15 hours per week
+                        previously spent firefighting integration issues.</p>
+                </div>
+            </div>
+
+            <!-- Case Study 3: Professional Services -->
+            <div class="case-study">
+                <h2>Professional Services Firm: Unreliable Project Costing</h2>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Industry</span>
+                        <span class="case-meta-value">Engineering consulting</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Revenue</span>
+                        <span class="case-meta-value">~$45M</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">System</span>
+                        <span class="case-meta-value">SAP B1 9.3, project module, 35 users</span>
+                    </div>
+                </div>
+
+                <h3>Presenting Problem</h3>
+                <p>Project managers couldn't trust profit/loss reports for active engagements. Time and expense
+                    allocations inconsistent across projects. WIP calculations off, making revenue recognition
+                    unreliable. Partners reviewing projects in Excel because SAP B1 reports didn't match operational
+                    reality.</p>
+
+                <h3>Technical Root Cause</h3>
+                <p>Project chart of accounts structure didn't align with how firm actually tracked profitability (by
+                    service line, not GL account). User-defined fields for project attributes poorly designed. Manual
+                    journal entries for cost allocations not following standard templates. Crystal Reports pulling from
+                    wrong transaction tables.</p>
+
+                <h3>Solution Approach</h3>
+                <ul>
+                    <li>Redesigned project CoA structure and allocation rules to match firm's profitability model</li>
+                    <li>Standardized UDF usage and created validation rules to enforce consistent project coding</li>
+                    <li>Built custom SQL-based project costing reports with drill-down to transaction detail</li>
+                    <li>Automated cost allocation workflow using SDK add-on to replace manual journal entries</li>
+                </ul>
+
+                <div class="outcome-highlight">
+                    <p><strong>Measurable Outcome:</strong></p>
+                    <p>Project P&L accuracy verified within 2% of Excel-based shadow system (previously 15-20%
+                        variance). Partners now use SAP B1 for project review meetings. Month-end WIP calculation time
+                        reduced from 3 days to 8 hours. Revenue recognition confidence restored for audit purposes.</p>
+                </div>
+            </div>
+
+            <!-- Case Study 4: Food & Beverage -->
+            <div class="case-study">
+                <h2>Food & Beverage Company: Emergency Support After Partner Disappeared</h2>
+
+                <div class="case-meta">
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Industry</span>
+                        <span class="case-meta-value">Specialty food manufacturer</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">Revenue</span>
+                        <span class="case-meta-value">~$65M</span>
+                    </div>
+                    <div class="case-meta-item">
+                        <span class="case-meta-label">System</span>
+                        <span class="case-meta-value">SAP B1 10.0, heavily customized, 50 users</span>
+                    </div>
+                </div>
+
+                <h3>Presenting Problem</h3>
+                <p>Original implementation partner went out of business. System failing during peak production
+                    season—posting errors blocking shipments, lot traceability queries timing out, production orders not
+                    closing properly. IT director inheriting undocumented customizations written in C# that nobody
+                    understood. Business continuity at risk.</p>
+
+                <h3>Technical Root Cause</h3>
+                <p>Custom SDK add-ons for lot tracking and production scheduling built without error handling or
+                    logging. SQL Server performance degraded due to missing indexes on high-transaction tables.
+                    Undocumented stored procedures modifying core SAP B1 tables (not supported). No disaster recovery
+                    plan.</p>
+
+                <h3>Solution Approach</h3>
+                <ul>
+                    <li>Emergency triage: stabilized production posting by disabling broken customizations temporarily
+                    </li>
+                    <li>Reverse-engineered critical SDK add-ons and rewrote with proper error handling</li>
+                    <li>SQL Server performance tuning: rebuilt indexes, optimized queries, configured maintenance plans
+                    </li>
+                    <li>Documented all customizations and established monthly health-check protocol</li>
+                </ul>
+
+                <div class="outcome-highlight">
+                    <p><strong>Measurable Outcome:</strong></p>
+                    <p>Production system stabilized within 72 hours. Posting errors eliminated. Lot traceability query
+                        time reduced from 45 seconds to under 3 seconds. SQL Server maintenance plan preventing
+                        performance degradation. IT director gained technical documentation to manage system internally
+                        going forward. Company avoided costly ERP replacement discussion.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Your Situation Is Different. Let's Diagnose What's Actually Broken.</h2>
+            <p>Every SAP B1 system has its own problems based on how it was implemented, customized, and used. A
+                technical audit identifies your specific issues and prioritizes fixes by business impact.</p>
+            <div class="cta-buttons">
+                <a href="mailto:audit@3g-consulting.com" class="btn-primary">Schedule Audit</a>
+                <a href="mailto:audit@3g-consulting.com" class="btn-secondary">Request Assessment</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        © 2026 3G Consulting. Senior SAP Business One Phase-2 Specialists.
+    </footer>
+</body>
+
+</html>
