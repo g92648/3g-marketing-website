@@ -1,0 +1,118 @@
+.about {
+    background: linear-gradient(135deg, var(--brand-700) 0%, var(--brand-800) 100%);
+    color: var(--white);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+}
+
+.about-text h2 {
+    color: var(--white);
+    margin-bottom: var(--space-6);
+}
+
+.lead-text {
+    font-size: var(--text-xl);
+    line-height: 1.7;
+    margin-bottom: var(--space-8);
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.about-features {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.feature-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.feature-icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--action-600);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: var(--text-lg);
+}
+
+.feature-item h4 {
+    color: var(--white);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-xl);
+}
+
+.feature-item p {
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+}
+
+.stat-card {
+    text-align: center;
+    padding: var(--space-8);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.stat-number {
+    font-size: var(--text-5xl);
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: var(--space-2);
+    background: linear-gradient(135deg, #FFFFFF, var(--action-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+@media (min-width: 992px) {
+    .about-content {
+        grid-template-columns: 1.5fr 1fr;
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: var(--space-6);
+    }
+
+    .stat-number {
+        font-size: var(--text-4xl);
+    }
+}

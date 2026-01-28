@@ -1,0 +1,126 @@
+.contact {
+    background: var(--gray-50);
+}
+
+.contact-header {
+    margin-bottom: var(--space-12);
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .contact-content {
+        grid-template-columns: 1fr 1.5fr;
+    }
+}
+
+/* Contact Info */
+.contact-info h3 {
+    margin-bottom: var(--space-4);
+}
+
+.contact-info>p {
+    color: var(--gray-600);
+    margin-bottom: var(--space-8);
+}
+
+.contact-details {
+    display: grid;
+    gap: var(--space-6);
+}
+
+.contact-item {
+    display: flex;
+    gap: var(--space-4);
+    align-items: flex-start;
+}
+
+.contact-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--brand-600), var(--action-600));
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+}
+
+.contact-item h4 {
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-1);
+    color: var(--gray-900);
+}
+
+.contact-item p,
+.contact-item a {
+    color: var(--gray-600);
+    margin: 0;
+}
+
+.contact-item a:hover {
+    color: var(--action-600);
+}
+
+/* Contact Form */
+.contact-form {
+    padding: var(--space-8);
+}
+
+.form-group {
+    margin-bottom: var(--space-6);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: var(--gray-900);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-3);
+    border: 2px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    font-family: inherit;
+    transition: all var(--transition-fast);
+    background: var(--white);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--action-600);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form .btn {
+    width: 100%;
+    padding: var(--space-4);
+    font-size: var(--text-lg);
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding: var(--space-6);
+    }
+}

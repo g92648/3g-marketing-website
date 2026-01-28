@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3G Consulting - SAP Business One Optimization & Integration</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --accent: #d4a574;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gray: #6b7280;
+            --border: #e5e3df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(248, 246, 243, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: -0.02em;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+            background: rgba(248, 246, 243, 0.95);
+        }
+
+        .contact-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .contact-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 100px;
+            padding: 6rem 0 4rem;
+            position: relative;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            line-height: 1.1;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-accent {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-accent::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--accent);
+            animation: underline 0.6s ease-out 0.8s both;
+        }
+
+        @keyframes underline {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .stat-bar {
+            display: flex;
+            gap: 3rem;
+            padding: 2rem 0;
+            border-top: 1px solid var(--border);
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 6rem 0;
+            background: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--border), transparent);
+        }
+
+        .section-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            background: var(--light);
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .service-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .service-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .service-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(26, 77, 46, 0.15);
+            border-color: var(--accent);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 6rem 0;
+            background: var(--dark);
+            color: white;
+        }
+
+        .expertise .section-title {
+            color: white;
+        }
+
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .expertise-column h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .expertise-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            color: #d1d5db;
+        }
+
+        .expertise-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            position: relative;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .process-step::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -1rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--border);
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            line-height: 48px;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .process-step h4 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 0;
+            background: var(--light);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .cta p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 77, 46, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+        }
+
+        footer p {
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .stat-bar {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .expertise-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step::before {
+                display: none;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .services::before {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="3g-logo.png" alt="3G Consulting Logo">
+                <span>3G Consulting</span>
+            </div>
+            <a href="#contact" class="contact-btn">Request Technical Audit</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div style="margin-bottom: 2rem;">
+                        <img src="sap-business-one-logo.png" alt="SAP Business One"
+                            style="height: 48px; width: auto; opacity: 0.7;">
+                    </div>
+                    <h1>Your ERP system isn't working the way it should. <span class="hero-accent">Let's fix it.</span>
+                    </h1>
+                    <p>Expert Phase-2 consultants for live SAP Business One systems. We fix rushed implementations,
+                        stabilize broken workflows, and integrate automation and intelligence where it actually helps.
+                    </p>
+                </div>
+
+                <div
+                    style="margin-top: 2rem; padding: 1.5rem; background: white; border: 1px solid var(--border); border-radius: 8px;">
+                    <div style="display: flex; gap: 3rem; animation: fadeIn 0.8s ease-out 1s both;">
+                        <div class="stat">
+                            <span class="stat-number">20+ Years</span>
+                            <span class="stat-label">SAP B1 Experience</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Phase-2</span>
+                            <span class="stat-label">Post-Go-Live Specialists</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Ecosystem Stability</span>
+                            <span class="stat-label">Automation & AI where it adds value</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="margin-top: 2rem; padding: 1.5rem; background: var(--light); border: 1px solid var(--border); border-radius: 8px;">
+                    <h3
+                        style="font-family: 'Crimson Pro', serif; font-size: 1.5rem; margin-bottom: 1rem; color: var(--dark);">
+                        When clients call us</h3>
+                    <ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem;">
+                        <li style="padding-left: 1.5rem; position: relative; color: var(--gray);"><span
+                                style="position:absolute; left:0; color: var(--primary); font-weight:600;">→</span>Month-end
+                            close is failing or numbers don't reconcile</li>
+                        <li style="padding-left: 1.5rem; position: relative; color: var(--gray);"><span
+                                style="position:absolute; left:0; color: var(--primary); font-weight:600;">→</span>Posting/workflows
+                            break after a change or upgrade</li>
+                        <li style="padding-left: 1.5rem; position: relative; color: var(--gray);"><span
+                                style="position:absolute; left:0; color: var(--primary); font-weight:600;">→</span>Reports
+                            don't match operational reality and nobody trusts them</li>
+                        <li style="padding-left: 1.5rem; position: relative; color: var(--gray);"><span
+                                style="position:absolute; left:0; color: var(--primary); font-weight:600;">→</span>Integrations
+                            stop syncing or create bad data</li>
+                        <li style="padding-left: 1.5rem; position: relative; color: var(--gray);"><span
+                                style="position:absolute; left:0; color: var(--primary); font-weight:600;">→</span>The
+                            original partner is gone or response time is unacceptable</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="container">
+                <h2 class="section-title">Specialized Recovery & Delivery</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🚨</div>
+                        <h3>Emergency Support</h3>
+                        <p>When things break, you need fast triage and a clear fix plan. Diagnosis, containment, and
+                            corrections that prevent repeat failures.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Review & Redesign</h3>
+                        <p>Auditing "rushed" go-lives to realign system configuration with your actual business
+                            processes and operational requirements.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>AI & Automations</h3>
+                        <p>Practical adoption of AI for automated reporting, intelligent forecasting, and
+                            high-efficiency process automation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3>Complex Integrations</h3>
+                        <p>Keep external systems in sync with SAP B1 using SDK/Service Layer patterns. Fix fragile
+                            interfaces and harden data validation.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">📊</div>
+                        <h3>Ad-Hoc Reporting</h3>
+                        <p>Custom SQL queries, Crystal Reports development, and financial reconciliation tools for
+                            accurate executive visibility.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤝</div>
+                        <h3>Partner Delivery</h3>
+                        <p>Acting as a senior technical lead for SAP partners who need dependable delivery capacity for
+                            high-stakes projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="expertise">
+            <div class="container">
+                <h2 class="section-title">The Talent Advantage</h2>
+                <div class="expertise-grid">
+                    <div class="expertise-column">
+                        <h4>Technical Foundation</h4>
+                        <ul class="expertise-list">
+                            <li>Senior SAP B1 SDK & Service Layer Dev</li>
+                            <li>Full-Cycle Implementation & Upgrade History</li>
+                            <li>SQL Server Performance Optimization</li>
+                            <li>Automation (including selective AI)</li>
+                            <li>Crystal Reports & automated reporting</li>
+                            <li>Complex system integrations</li>
+                        </ul>
+                    </div>
+                    <div class="expertise-column">
+                        <h4>Delivery Approach</h4>
+                        <ul class="expertise-list">
+                            <li>Partner-centric project execution</li>
+                            <li>Low-risk go-live strategies</li>
+                            <li>Mid-market company operations</li>
+                            <li>Post-implementation stabilization</li>
+                            <li>Senior technical capacity on demand</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta" id="contact">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Stop fighting your ERP. Start using it.</h2>
+                    <p>Schedule a technical audit to identify immediate optimization wins.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:audit@3g-consulting.com" class="btn-primary">Talk to a Senior Consultant</a>
+                        <a href="mailto:audit@3g-consulting.com" class="btn-secondary">Request Technical Audit</a>
+                    </div>
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <a href="https://wa.me/18183121550" target="_blank"
+                            style="display: inline-flex; align-items: center; gap: 0.5rem; color: #1a4d2e; font-weight: 500; text-decoration: none; transition: opacity 0.3s ease;"
+                            onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                            </svg>
+                            <span>Chat now on WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 3G Consulting. Senior SAP Business One Phase-2 Specialists.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

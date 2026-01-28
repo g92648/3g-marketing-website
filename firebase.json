@@ -1,0 +1,11 @@
+{
+    "hosting": {
+        "site": "3g-consulting",
+        "public": "public",
+        "ignore": [
+            "firebase.json",
+            "**/.*",
+            "**/node_modules/**"
+        ]
+    }
+}
