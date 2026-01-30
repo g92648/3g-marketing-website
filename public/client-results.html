@@ -502,55 +502,6 @@
                 </div>
             </div>
 
-            <!-- Case Study 4: Food & Beverage -->
-            <div class="case-study">
-                <h2>Food & Beverage Company: Emergency Support After Partner Disappeared</h2>
-
-                <div class="case-meta">
-                    <div class="case-meta-item">
-                        <span class="case-meta-label">Industry</span>
-                        <span class="case-meta-value">Specialty food manufacturer</span>
-                    </div>
-                    <div class="case-meta-item">
-                        <span class="case-meta-label">Revenue</span>
-                        <span class="case-meta-value">~$65M</span>
-                    </div>
-                    <div class="case-meta-item">
-                        <span class="case-meta-label">System</span>
-                        <span class="case-meta-value">SAP B1 10.0, heavily customized, 50 users</span>
-                    </div>
-                </div>
-
-                <h3>Presenting Problem</h3>
-                <p>Original implementation partner went out of business. System failing during peak production
-                    season—posting errors blocking shipments, lot traceability queries timing out, production orders not
-                    closing properly. IT director inheriting undocumented customizations written in C# that nobody
-                    understood. Business continuity at risk.</p>
-
-                <h3>Technical Root Cause</h3>
-                <p>Custom SDK add-ons for lot tracking and production scheduling built without error handling or
-                    logging. SQL Server performance degraded due to missing indexes on high-transaction tables.
-                    Undocumented stored procedures modifying core SAP B1 tables (not supported). No disaster recovery
-                    plan.</p>
-
-                <h3>Solution Approach</h3>
-                <ul>
-                    <li>Emergency triage: stabilized production posting by disabling broken customizations temporarily
-                    </li>
-                    <li>Reverse-engineered critical SDK add-ons and rewrote with proper error handling</li>
-                    <li>SQL Server performance tuning: rebuilt indexes, optimized queries, configured maintenance plans
-                    </li>
-                    <li>Documented all customizations and established monthly health-check protocol</li>
-                </ul>
-
-                <div class="outcome-highlight">
-                    <p><strong>Measurable Outcome:</strong></p>
-                    <p>Production system stabilized within 72 hours. Posting errors eliminated. Lot traceability query
-                        time reduced from 45 seconds to under 3 seconds. SQL Server maintenance plan preventing
-                        performance degradation. IT director gained technical documentation to manage system internally
-                        going forward. Company avoided costly ERP replacement discussion.</p>
-                </div>
-            </div>
         </div>
     </main>
 
