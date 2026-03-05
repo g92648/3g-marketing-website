@@ -14,6 +14,29 @@
     margin-bottom: var(--space-6);
 }
 
+.about-linkedin {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    text-decoration: none;
+    margin-bottom: var(--space-6);
+    transition: color var(--transition-fast);
+    letter-spacing: 0.01em;
+}
+
+.about-linkedin:hover {
+    color: #70B5F9;
+}
+
+.about-linkedin-icon {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+}
+
 .lead-text {
     font-size: var(--text-xl);
     line-height: 1.7;
